@@ -1,0 +1,53 @@
+barcha userlarni olish uchun (Faqat admin)  http://localhost:4100/api/users 
+
+registratsiya uchun http://localhost:4100/api/auth/register
+  {
+      "fullname": "fullname",
+      "email": "yourEmail@gmail.com",
+      "password": "password",
+  }
+
+verication email http://localhost:4100/api/auth/verify
+
+{
+    "fullname": "fullname",
+    "email": "yourEmail@gmail.com",
+    "password": "password",
+    "code":476924
+}
+
+login qilish uchun  http://localhost:4100/api/auth/login  
+
+login Data  admin
+{
+    "email": "admin@gmail.com",
+    "password": "1111",
+}
+
+
+categoriya uchun http://localhost:4100/api/category
+
+{
+	"name": "Web development"
+}
+
+cousre qo'shish uchun http://localhost:4100/api/courses
+
+{
+	"name": "Reactjs Frontend",
+  "categoryId":"539f18db-af8f-4a60-bfd9-f1d43e1d8b7c"
+}
+
+module uchun http://localhost:4100/api/module
+
+{
+    "name": "HTML & CSS ",
+    "courseId": "d09e15c5-aab9-43f5-8981-4b5ffe29f4ad"
+}
+
+enrolment uchun http://localhost:4100/api/enrollment
+
+{
+    "userId": "1f390e3d-e8f8-414e-a9a9-89bc760d7e61",
+    "courseId": "d09e15c5-aab9-43f5-8981-4b5ffe29f4ad"
+}

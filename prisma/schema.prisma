@@ -1,0 +1,68 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String       @default(dbgenerated("gen_random_uuid()")) @map("id") @db.Uuid
+  fullname    String       @map("fullname") @db.VarChar(64)
+  email       String       @unique @map("email")
+  password    String       @map("password")
+  isAdmin     Boolean      @default(false) @map("is_admin")
+  createdAt   DateTime     @default(now()) @map("created_at")
+  enrollments Enrollment[]
+
+  @@id([id])
+  @@map("users")
+}
+
+model Category {
+  id        String   @default(dbgenerated("gen_random_uuid()")) @map("id") @db.Uuid
+  name      String   @map("name") @db.VarChar(64)
+  createdAt DateTime @default(now()) @map("created_at")
+  courses   Course[]
+
+  @@id([id])
+  @@map("categories")
+}
+
+model Module {
+  id        String   @default(dbgenerated("gen_random_uuid()")) @map("id") @db.Uuid
+  name      String   @map("name") @db.VarChar(64)
+  courseId  String   @map("course_id") @db.Uuid
+  createdAt DateTime @default(now()) @map("created_at")
+  course    Course   @relation(fields: [courseId], references: [id])
+
+  @@id([id])
+  @@map("modules")
+}
+
+model Course {
+  id          String       @default(dbgenerated("gen_random_uuid()")) @map("id") @db.Uuid
+  name        String       @map("name") @db.VarChar(64)
+  desc        String       @map("desc") @db.Text
+  categoryId  String       @map("category_id") @db.Uuid
+  createdAt   DateTime     @default(now()) @map("created_at")
+  modules     Module[]
+  enrollments Enrollment[]
+  category    Category     @relation(fields: [categoryId], references: [id])
+
+  @@id([id])
+  @@map("courses")
+}
+
+model Enrollment {
+  id        String   @default(dbgenerated("gen_random_uuid()")) @map("id") @db.Uuid
+  userId    String   @map("user_id") @db.Uuid
+  courseId  String   @map("course_id") @db.Uuid
+  createdAt DateTime @default(now()) @map("created_at")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  course    Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@id([id])
+  @@map("enrollments")
+}

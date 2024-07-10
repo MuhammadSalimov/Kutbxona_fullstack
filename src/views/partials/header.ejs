@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    
+* {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+ul {
+  list-style: none !important;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+
+
+nav {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  text-transform: uppercase !important;
+  font-weight: 600 !important;
+  letter-spacing: 2px !important;
+  margin-bottom: 50px;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 20px 50px !important;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, .05) !important;
+  z-index: 1 !important;
+  background-color: #552307 !important;
+}
+
+.menu {
+  display: flex !important;
+}
+
+.menu li a {
+  padding: 10px 15px !important;
+  color: #fff !important;
+  font-size: 12px !important;
+}
+
+.siteName {
+  font-size: 25px !important;
+  font-weight: bold !important;
+  color: #fff !important;
+}
+
+.logo img {
+  width: 50px !important;
+}
+
+.menu li a:hover,
+.active {
+  background-color: #29292929 !important;
+  font-weight: 700 !important;
+  transition: all ease 0.4s !important;
+}
+
+  </style>
+</head>
+<body>
+  
+<section class="main">
+  <nav>
+    <a href="/" class="siteName">BookStore</a>
+    <ul class="menu">
+      <li><a href="/" class="active">Home</a></li>
+      <li><a href="/">catagories</a></li>
+      <li><a href="/">product</a></li>
+    </ul>
+    <div>
+      <a href="/auth/login" class="border border-secondary py-2 px-4 rounded">login</a>
+      <a href="/profile/admin" class="border border-info py-2 px-4 rounded"><i class="fa-solid fa-user"></i>
+      Admin
+      </a> &nbsp;
+      <a href="/profile/user" class="border border-info py-2 px-4 rounded"><i class="fa-solid fa-user"></i>
+      Profile
+        </a>
+    </div>
+  </nav>
+
+</section>
+</body>
+</html>
+
